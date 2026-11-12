@@ -19,7 +19,11 @@ import nl.giejay.android.tv.immich.ImmichApplication
 import nl.giejay.android.tv.immich.R
 import nl.giejay.android.tv.immich.album.AlbumFragmentDirections
 import nl.giejay.android.tv.immich.album.SelectionType
+<<<<<<< HEAD
 import nl.giejay.android.tv.immich.homescreenchannels.HomeScreenChannelManager
+=======
+import nl.giejay.android.tv.immich.screensaver.ScreenSaverEffect
+>>>>>>> 8a1cbc8 (Updates to add support for immich)
 import nl.giejay.android.tv.immich.people.PeopleFragmentDirections
 import nl.giejay.android.tv.immich.screensaver.ScreenSaverType
 import nl.giejay.android.tv.immich.security.ApiKeyCipher
@@ -207,6 +211,24 @@ data object SCREENSAVER_PLAY_SOUND : BooleanPref(false,
     ImmichApplication.appContext!!.getString(R.string.play_sound),
     ImmichApplication.appContext!!.getString(R.string.play_sound_screensaver))
 
+<<<<<<< HEAD
+=======
+data object SCREENSAVER_INCLUDE_VIDEOS : BooleanPref(false, ImmichApplication.appContext!!.getString(R.string.include_videos), ImmichApplication.appContext!!.getString(R.string.include_videos_screensaver))
+data object SCREENSAVER_PLAY_SOUND : BooleanPref(false, ImmichApplication.appContext!!.getString(R.string.play_sound), ImmichApplication.appContext!!.getString(R.string.play_sound_screensaver))
+data object SCREENSAVER_EFFECT : EnumByTitlePref<ScreenSaverEffect>(ScreenSaverEffect.SLIDESHOW,
+    ImmichApplication.appContext!!.getString(R.string.screensaver_style),
+    ImmichApplication.appContext!!.getString(R.string.screensaver_style_desc)) {
+
+    override fun fromPrefValue(prefValue: String): ScreenSaverEffect {
+        return ScreenSaverEffect.valueOf(prefValue)
+    }
+
+    override fun getEnumEntries(): Array<ScreenSaverEffect> {
+        return ScreenSaverEffect.entries.toTypedArray()
+    }
+}
+
+>>>>>>> 8a1cbc8 (Updates to add support for immich)
 data object SCREENSAVER_TYPE : EnumByTitlePref<ScreenSaverType>(ScreenSaverType.RECENT,
     ImmichApplication.appContext!!.getString(R.string.screensaver_type),
     ImmichApplication.appContext!!.getString(R.string.screensaver_type_desc)) {
@@ -637,6 +659,7 @@ data object ScreensaverPrefScreen : PrefScreen(ImmichApplication.appContext!!.ge
                 SCREENSAVER_START_NOW,
                 SCREENSAVER_SET,
                 SCREENSAVER_INTERVAL,
+                SCREENSAVER_EFFECT,
                 SCREENSAVER_TYPE,
                 SCREENSAVER_ALBUMS,
                 SCREENSAVER_PEOPLE,
